@@ -406,11 +406,12 @@ namespace Plank
 				unowned Wnck.Workspace? active_workspace = window.get_screen ().get_active_workspace ();
 				if ((window.is_active () && active_workspace != null && window.is_in_viewport (active_workspace))
 					|| window == window.get_screen ().get_active_window ()) {
-					foreach (unowned Wnck.Window w in windows)
-						if (!w.is_minimized () && w.is_in_viewport (active_workspace)) {
-							w.minimize ();
-							Thread.usleep (WINDOW_GROUP_DELAY);
-						}
+						focus_next(app, event_time);
+					// foreach (unowned Wnck.Window w in windows)
+					// 	if (!w.is_minimized () && w.is_in_viewport (active_workspace)) {
+					// 		w.minimize ();
+					// 		Thread.usleep (WINDOW_GROUP_DELAY);
+					// 	}
 					return;
 				}
 			}
